@@ -1,0 +1,12 @@
+﻿.btn {
+    color: #301504;
+    background-color: #FCB900;
+}
+
+.btn:hover {
+    color: grey;
+}
+
+label {
+    margin-left: 10px;
+}
