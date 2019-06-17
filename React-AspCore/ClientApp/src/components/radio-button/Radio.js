@@ -6,6 +6,11 @@ export default class Radio extends React.Component {
     state = {
         type: ''
     }
+
+    handleClick = () = {
+    
+    }
+
     render() {
         return (
             <div>
@@ -15,6 +20,7 @@ export default class Radio extends React.Component {
                     value={this.props.value}
                     name="btn"
                     onChange={e => this.setState({ type: e.target.value })}
+                    onClick={this.handleClick.bind(this)}
                 />
                 <label>{this.props.value}</label>
                 <hr />

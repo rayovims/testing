@@ -18,7 +18,7 @@ export default class Button extends React.Component {
 
     search() {
         console.log("Search Function called");
-        console.log(this.props.type);
+        //console.log(this.props.type);
     }
 
     browse() {

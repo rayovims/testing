@@ -1,26 +1,69 @@
 import React, { Component } from 'react';
-import Radio from '../radio-button/Radio';
-import Button from '../button/Button';
+import { Route } from 'react-router';
+//import Browse from '../browse/Browse';
 import './Home.css';
 
 export class Home extends Component {
     displayName = Home.name
 
+    state = {
+        type: '',
+        func: ''
+    };
+
+    componentDidUpdate() {
+        const { type, func } = this.state;
+        console.log(type, func);
+    }
+
     render() {
+
+        if (this.state.func === 'browse') {
+            console.log("CLICKED");
+            return <Route path='/browse' />
+        }
+
         return (
             <div className="row">
                 <div id="body-outline" className="container col-6">
-                    <p style={{ marginTop: "5px", fontWeight: "700" }}>Select The Type</p>
+                    <p style={{ marginTop: "5px", fontWeight: "700" }}>Select the Type</p>
                     <hr />
-                    <Radio value="Security Group" />
+                    <input
+                        className="radio-btn"
+                        type="radio"
+                        value="security"
+                        name="btn"
+                        onChange={e => this.setState({ type: e.target.value })}
+                    />
+                    <label>Security Group</label>
                     <hr />
-                    <Radio value="Team Mailbox" />
-                    <div className="row">
-                        <div className="col-6 text-right btn-fix">
-                            <Button value="Search" />
+                    <input
+                        className="radio-btn"
+                        type="radio"
+                        value="mailbox"
+                        name="btn"
+                        onChange={e => this.setState({ type: e.target.value })}
+                    />
+                    <label>Team Mailbox</label>
+                    <hr />
+                    <div className="row" style={{ marginBottom: "15px" }}>
+                        <div className="col-sm-6 text-right">
+                            <button
+                                type="button"
+                                className="btn"
+                                onClick={() => this.setState({func: 'search'})}
+                            >
+                                Search
+                            </button>
                         </div>
-                        <div className="col-6 text-left btn-fix">
-                            <Button value="Browse" />
+                        <div className="col-sm-6 text-left">
+                            <button
+                                type="button"
+                                className="btn"
+                                onClick={() => this.setState({ func: 'browse' })}
+                            >
+                                Browse
+                            </button>
                         </div>
                     </div>
                 </div>
